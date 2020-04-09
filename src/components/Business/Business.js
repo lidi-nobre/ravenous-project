@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
+import './Business.css';
 import ReactDom from "react-dom";
 
 class Business extends React.Component {
