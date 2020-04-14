@@ -13,7 +13,7 @@ class SearchBar extends React.Component {
             'Best Match': 'best_match', 
             'Higest Rated': 'rating',
             'Most Reviewed': 'review_count'
-        }
+        };
     }
     getSortByClass(sortByOption){
         if (this.sortBy === sortByOption) {
@@ -25,16 +25,21 @@ class SearchBar extends React.Component {
 
     handleSortByChange(sortByOption) {
         this.setState({
-            sortBy: ''
+            sortBy: sortByOption
         })
     }
     //Creating a method:
     renderSortByOptions() {
         /* Iterate throught the object: First access the keys of the sortByOptions, then call method pass in "sortByOptions" as the argument. Iterate the using the map() method.Then pass a callback function to the map() as an arg, the parameter should called "sortByOption" */
+
         return Object.keys(this.sortByOptions).map(sortByOption => {
             //Let's store the object values:
             let sortByOptionValue = this.sortByOptions[sortByOption];
-            return <li className="getSortByClass(sortByOptionValue) " key={sortByOptionValue}>{sortByOption}</li>
+            return <li 
+                        className={this.getSortByClass(sortByOptionValue)}
+                        key={sortByOptionValue}
+                        onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>{sortByOption}
+                    </li>
         });
     }
     render() {
